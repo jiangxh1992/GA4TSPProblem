@@ -1,0 +1,55 @@
+[System]
+Name='house'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=14
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='MarketValue'
+Range=[0 1000]
+NumMFs=4
+MF1='Low':'trapmf',[0 0 70 100]
+MF2='Medium':'trapmf',[50 100 200 250]
+MF3='High':'trapmf',[200 300 650 850]
+MF4='VeryHigh':'trapmf',[650 850 1000 1000]
+
+[Input2]
+Name='Location'
+Range=[0 10]
+NumMFs=3
+MF1='Bad':'trapmf',[0 0 1.5 4]
+MF2='Fair':'trapmf',[2.5 5 6 8.5]
+MF3='Excellent':'trapmf',[6 8.5 10 10]
+
+[Output1]
+Name='House'
+Range=[0 10]
+NumMFs=5
+MF1='VeryLow':'trimf',[0 0 3]
+MF2='Low':'trimf',[0 3 6]
+MF3='Medium':'trimf',[2 5 8]
+MF4='VeryHigh':'trimf',[7 10 10]
+MF5='High':'trimf',[4 7 10]
+
+[Rules]
+1 0, 2 (1) : 1
+0 1, 2 (1) : 1
+1 1, 1 (1) : 1
+2 1, 2 (1) : 1
+3 1, 3 (1) : 1
+4 1, 5 (1) : 1
+1 2, 2 (1) : 1
+2 2, 3 (1) : 1
+3 2, 5 (1) : 1
+4 2, 4 (1) : 1
+1 3, 3 (1) : 1
+2 3, 5 (1) : 1
+3 3, 4 (1) : 1
+4 3, 4 (1) : 1

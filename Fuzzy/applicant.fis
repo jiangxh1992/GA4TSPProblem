@@ -1,0 +1,51 @@
+[System]
+Name='applicant'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Asset'
+Range=[0 1000000]
+NumMFs=3
+MF1='Low':'trimf',[0 0 150000]
+MF2='Medium':'trapmf',[50000 250000 450000 650000]
+MF3='High':'trapmf',[500000 700000 1000000 1000000]
+
+[Input2]
+Name='Income'
+Range=[0 100000]
+NumMFs=4
+MF1='Low':'trapmf',[0 0 10000 25000]
+MF2='Medium':'trimf',[15000 35000 55000]
+MF3='High':'trimf',[40000 60000 80000]
+MF4='VeryHigh':'trapmf',[60000 80000 100000 100000]
+
+[Output1]
+Name='Applicant'
+Range=[0 10]
+NumMFs=3
+MF1='Low':'trapmf',[0 0 2 4]
+MF2='Medium':'trimf',[2 5 8]
+MF3='High':'trapmf',[6 8 10 10]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 2 (1) : 1
+1 4, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 3 (1) : 1
+2 4, 3 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
+3 4, 3 (1) : 1
